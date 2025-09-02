@@ -1,0 +1,41 @@
+# Example punchcard configuration
+# This file defines how samples are combined and analyzed
+
+# Main sample collection
+MySamples:
+    include: [[sample1, sample2, sample3]]
+    description: "Combined dataset from three samples"
+
+# Subset for neuronal cells
+Neurons:
+    include: [[MySamples]]
+    subset: "Clusters == 'Neurons'"
+    description: "Neuronal cell subset"
+
+# Subset for non-neuronal cells
+NonNeurons:
+    include: [[MySamples]]
+    subset: "Clusters != 'Neurons'"
+    description: "Non-neuronal cell subset"
+
+# Subset for high-quality cells
+HighQuality:
+    include: [[MySamples]]
+    subset: "nGenes >= 1000 and nUMIs >= 2000"
+    description: "High-quality cells only"
+
+# Subset for specific brain regions
+Cortex:
+    include: [[MySamples]]
+    subset: "Region == 'Cortex'"
+    description: "Cortical cells only"
+
+Hippocampus:
+    include: [[MySamples]]
+    subset: "Region == 'Hippocampus'"
+    description: "Hippocampal cells only"
+
+# Combined analysis
+BrainRegions:
+    include: [[Cortex, Hippocampus]]
+    description: "Combined cortical and hippocampal analysis"

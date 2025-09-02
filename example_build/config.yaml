@@ -1,0 +1,40 @@
+# Example cytograph configuration for demo build
+# This file shows how to configure cytograph for a specific analysis
+
+paths:
+  # Update these paths to match your setup
+  samples: "/path/to/your/samples"
+  autoannotation: "/path/to/auto-annotation"
+  metadata: "/path/to/metadata.csv"
+
+# Analysis parameters
+clustering:
+  resolution: 0.5
+  algorithm: "leiden"
+  min_cluster_size: 10
+
+embedding:
+  method: "umap"
+  n_neighbors: 15
+  min_dist: 0.1
+  n_components: 2
+
+qc:
+  min_genes: 200
+  max_genes: 6000
+  min_umis: 500
+  max_mito: 0.2
+  max_ribo: 0.5
+
+# Processing parameters
+preprocessing:
+  normalize: true
+  scale: true
+  regress_out: ["nUMIs", "percent_mito"]
+
+# Output settings
+export:
+  format: ["png", "pdf"]
+  dpi: 300
+  width: 10
+  height: 8

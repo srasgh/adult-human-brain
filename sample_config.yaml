@@ -1,0 +1,23 @@
+# Sample cytograph configuration
+# Save this as ~/.cytograph or in your build folder as config.yaml
+
+paths:
+  samples: "/path/to/your/samples"
+  autoannotation: "/path/to/auto-annotation"
+  metadata: "/path/to/metadata.csv"
+
+# Analysis parameters
+clustering:
+  resolution: 0.5
+  algorithm: "leiden"
+
+embedding:
+  method: "umap"
+  n_neighbors: 15
+  min_dist: 0.1
+
+qc:
+  min_genes: 200
+  max_genes: 6000
+  min_umis: 500
+  max_mito: 0.2
